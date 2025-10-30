@@ -51,10 +51,10 @@ function processMessage(message) {
 
             const stream = fs.createWriteStream(path.join(__dirname, source))
 
-            const header = Object.keys(value)
+            const header = Object.keys(value);
 
             // Write the header row
-            stream.write(header.join(',') + '\n')
+            stream.write(header.join(',') + '\n');
 
             // Store the writable stream for the source
             writableStream.set(source, stream);
@@ -62,7 +62,7 @@ function processMessage(message) {
             totalFilesReconstructed++;
         }
 
-        const stream = writableStream.get(source)
+        const stream = writableStream.get(source);
 
         const csvRow = jsonToCSVRow(value);
 
