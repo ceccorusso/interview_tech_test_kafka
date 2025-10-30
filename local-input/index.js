@@ -18,7 +18,7 @@ const producer = kafka.producer();
 async function processCSVFile(filePath) {
     return new Promise((resolve, reject) => {
 
-        const source = path.basename(filePath)
+        const source = path.basename(filePath);
 
         let numberOfRows = 0;
 
@@ -33,14 +33,14 @@ async function processCSVFile(filePath) {
                     value: JSON.stringify(data), headers: {
                         source: source, timestamp: new Date().toISOString()
                     }
-                }]
+                }];
 
                 await producer.send({
                     topic: topic, messages: messages
                 });
             })
             .on('end', () => {
-                resolve(numberOfRows)
+                resolve(numberOfRows);
             })
             .on('error', (error) => {
                 console.error(`Error reading ${filePath}:`, error);
